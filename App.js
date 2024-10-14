@@ -1,12 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import LoginScreen from './Screens/LoginScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import TodoScreen from './Screens/TodoScreen';
+import TodoEditable from './Screens/TodoEditable';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Login" component={LoginScreen}/>
+        <Stack.Screen name="TodoScreen" component={TodoScreen} />
+        <Stack.Screen name="TodoEditable" component={TodoEditable} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
